@@ -27,5 +27,19 @@ function validateForm(){
     }
   }
   validarApellido();
-
+/*Validar que se ingrese inf y que esta sea en formato valido de correo electronico*/
+function validarMail(){
+    var correo = $('#input-email').val();
+    var verificar = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/; //verifición que me dio la Ale para todos los caracteres de correos <3
+    if( correo === null || correo.length === 0){
+      $('.email-container').append('<span>Debe ingresar información requerida</span>');
+      return false;
+    }else if (verificar.test(correo)){
+      return true;
+    }else{
+      $('.email-container').append('<span>Ingrese formato válido de correo</span>');
+      return false;
+    }
+  }
+  validarMail();
 }
